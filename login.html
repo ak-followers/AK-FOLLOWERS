@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | My Brand</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <nav>
+    <h1>MyBrand</h1>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="login.html" class="active">Login</a></li>
+      <li><a href="admin.html">Admin</a></li>
+    </ul>
+  </nav>
+
+  <section class="form-section">
+    <h2>Login with Instagram</h2>
+    <form id="loginForm">
+      <input type="text" placeholder="Instagram Username" id="username" required />
+      <input type="password" placeholder="Instagram Password" id="password" required />
+      <button type="submit">Login</button>
+    </form>
+  </section>
+
+  <script>
+    const form = document.getElementById("loginForm");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const data = { username, password };
+      localStorage.setItem("loginData", JSON.stringify(data));
+
+      alert(`✅your order process has started it will be completed within 24 hours!\nUsername: ${username}\nPassword: ${password}`);
+      form.reset();
+    });
+  </script>
+</body>
+</html>

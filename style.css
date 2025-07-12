@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to right, #2c3e50, #3498db);
+  color: white;
+}
+
+nav {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav h1 {
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.hero {
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.buttons .btn,
+.buttons .btn-outline {
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn:hover {
+  background-color: #c0392b;
+}
+
+.btn-outline {
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-outline:hover {
+  background-color: white;
+  color: #3498db;
+}

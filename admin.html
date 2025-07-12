@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Panel</title>
+  <style>
+    body {
+      background-color: #1e1e2f;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .admin-login, .admin-panel {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      width: 300px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+    }
+    .visible {
+      display: flex;
+    }
+    .panel-box {
+      border: 1px solid #444;
+      padding: 20px;
+      background-color: #2c2c3c;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Admin Access</h1>
+
+  <div class="admin-login visible" id="loginBox">
+    <input type="password" id="adminPass" placeholder="Enter admin password" />
+    <button onclick="checkPassword()">Login</button>
+  </div>
+
+  <div class="admin-panel" id="adminPanel">
+    <div class="panel-box">
+      <h2>Welcome Admin!</h2>
+      <p>Here is your dummy user login data:</p>
+      <pre id="userData">Loading...</pre>
+    </div>
+  </div>
+
+  <script>
+    const ADMIN_PASSWORD = "admin1420";
+
+    function checkPassword() {
+      const input = document.getElementById("adminPass").value;
+      if (input === ADMIN_PASSWORD) {
+        document.getElementById("loginBox").classList.remove("visible");
+        document.getElementById("adminPanel").classList.add("visible");
+
+        const data = localStorage.getItem("loginData");
+        document.getElementById("userData").textContent = data ? data : "No data found.";
+      } else {
+        alert("❌ Incorrect password");
+      }
+    }
+  </script>
+</body>
+</html>
